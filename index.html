@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-	</head>
+<head>
+	<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+	<!-- Use components defined in separate files. -->
+	<script src="js/arrow-key-rotation.js"></script>
+	<script src="js/play-on-window-click.js"></script>
+	<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+	<!-- <script src="hide-once-playing.js"></script> -->
+</head>
 
-	<body>
-		<a-scene>
-		 
-		</a-scene>
-	</body>
+<body>
+	<a-scene>
+		<a-videosphere rotation="0 180 0" src="#video" 
+		play-on-window-click
+		play-on-vrdisplayactivate-or-enter-vr>
+	</a-videosphere>
+	<a-assets>
+		<video id="vid1" autoplay loop="true" src="video/video1.mp4"  playsinline webkit-playsinline> </video>
+	</a-assets>
+
+	<!-- Using the asset management system. -->
+	<a-videosphere src="#vid1"></a-videosphere>
+
+</a-scene>
+</body>
 </html>
 
