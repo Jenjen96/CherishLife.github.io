@@ -1,28 +1,101 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
-	<!-- Use components defined in separate files. -->
-	<script src="js/arrow-key-rotation.js"></script>
-	<script src="js/play-on-window-click.js"></script>
-	<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
-	<!-- <script src="hide-once-playing.js"></script> -->
-</head>
+	<head>
+		<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+		<!-- Use components defined in separate files. -->
+		<!-- <script src="js/arrow-key-rotation.js"></script> -->
+		<script src="js/play-on-window-click.js"></script>
+		<!-- <script src="hide-once-playing.js"></script> -->
 
-<body>
-	<a-scene>
-		<a-videosphere rotation="0 180 0" src="#video" 
-		play-on-window-click
-		play-on-vrdisplayactivate-or-enter-vr>
-	</a-videosphere>
-	<a-assets>
-		<video id="vid1" autoplay loop="true" src="video/video1.mp4"  playsinline webkit-playsinline> </video>
-	</a-assets>
 
-	<!-- Using the asset management system. -->
-	<a-videosphere src="#vid1"></a-videosphere>
+		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+		<script src="js/go-toScene-onClick.js"></script>
+		<script>
+	      document.addEventListener("DOMContentLoaded", function(event) {
+	        var scene = document.querySelector("a-scene");
+	        var vid = document.getElementById("vid1");
+	        var videoShere = document.getElementById("videoshere1");
 
-</a-scene>
-</body>
+	        if (scene.hasLoaded) {
+	          run();
+	        } else {
+	          scene.addEventListener("loaded", run);
+	        }
+	        
+	        function run () {
+	          if(AFRAME.utils.device.isMobile()) {
+	            document.querySelector('#splash').style.display = 'flex';
+	            document.querySelector('#splash').addEventListener('click', function () {
+	              playVideo();
+	              this.style.display = 'none';
+	            })
+	          } else {
+	              playVideo();
+	          }
+	        }
+	        
+	        function playVideo () {
+	          vid.play();
+	          videoShere.components.material.material.map.image.play();
+	        }
+	      })
+    </script>
+		
+
+	</head>
+
+	<body>
+		<a-scene>
+
+			 <!-- Asset management system. -->
+			<a-assets>
+				<video id="vid1"  src="video/video1.mp4"  preload="auto"  playsinline webkit-playsinline> </video>
+				<video id="vid2"  src="video/video2.mp4"  preload="auto" playsinline webkit-playsinline> </video>
+			</a-assets>
+
+
+
+			<!-- scenes -->
+			<a-entity id="scenes">
+				<!-- scene 1 -->
+				<a-videosphere
+				rotation="0 180 0"
+				visible="true"
+				id="videosphere1"
+				src="#vid1"
+				autoplay = "true"
+				show-btn-when-ended="target: #btn1"
+				play-on-vrdisplayactivate-or-enter-vr>
+				</a-videosphere>
+
+				<!-- scene 2 -->
+				<a-videosphere
+				rotation="0 180 0"
+				visible="false"
+				id="videosphere2"
+				src="#vid2"
+				
+				autoplay loop= "false"
+				show-btn-when-ended="target: #btn2"
+				play-on-window-click
+				play-on-vrdisplayactivate-or-enter-vr> 
+				</a-videosphere>
+			</a-entity>
+
+			<a-entity
+				id="btn1"
+				geometry = "primative: plane"
+				material = "color: yellow; opacity:0.2"
+				position = "-0.8 3 -12.3"
+				rotation = "0 -1 -3"
+				scale = "12.5 25 1"
+				visible = "false"
+				text = "align:center; width: 6; wrapCount:100; color:black;
+						value: CLICK HERE"
+				go-toScene-onCLick>
+			</a-entity>
+
+		</a-scene>
+	</body>
 </html>
 
