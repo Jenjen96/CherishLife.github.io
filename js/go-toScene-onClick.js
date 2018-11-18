@@ -3,10 +3,13 @@ AFRAME.registerComponent('cursor-listener', {
 		el = this.el;
 		this.goToScene = this.goToScene.bind(this);
 		el.addEventListener('click', this.goToScene);
+		 console.log("what is this");
 	},
 
 	goToScene: function(evt) {
+		 console.log("Go to scne");
 		if(this.el.getAttribute('visible')) {
+			 console.log("inside go to scnee");
 			console.log('in window.goToScene');
 			var videosphere1 = document.querySelector('#videosphere1');
 			var videosphere2 = document.querySelector('#videosphere2');
@@ -20,10 +23,10 @@ AFRAME.registerComponent('cursor-listener', {
 			this.el.setAttribute('visible', 'false');
 
 
-			//refresh play button
-			var playbtn = document.querySelector('#playbtn');
-			playbtn.pause();
-			playbtn.play();
+			// //refresh play button
+			// var playbtn = document.querySelector('#playbtn');
+			// playbtn.pause();
+			// playbtn.play();
 
 			//change the scene
 			videosphere2.setAttribute('visible', 'true');
