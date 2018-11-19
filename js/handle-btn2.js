@@ -1,4 +1,4 @@
-AFRAME.registerComponent('TutorialVideoBtn', {
+AFRAME.registerComponent('handle-btn2', {
     init: function() {
         this.gotoRealLecture = this.gotoRealLecture.bind(this);
         this.pause();
