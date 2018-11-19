@@ -3,20 +3,17 @@ AFRAME.registerComponent('cursor-listener', {
 		el = this.el;
 		this.goToScene = this.goToScene.bind(this);
 		el.addEventListener('click', this.goToScene);
-		 console.log("what is this");
 	},
 
 	goToScene: function(evt) {
-		 console.log("Go to scne");
 		if(this.el.getAttribute('visible')) {
-			 console.log("inside go to scnee");
 			console.log('in window.goToScene');
 			var videosphere1 = document.querySelector('#videosphere1');
 			var videosphere2 = document.querySelector('#videosphere2');
 
 			//remove the previous video
 			videosphere1.components.material.material.map.image.pause();
-			videosphere1.setAttribute('visible', 'fasle');
+			videosphere1.setAttribute('visible', 'false');
 			videosphere1.parentNode.removeChild(videosphere1);
 
 			//hide the button
