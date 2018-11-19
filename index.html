@@ -23,7 +23,7 @@
 		<script src="js/scene2-onClick.js"></script>
 		
 		<!-- Script needed to run video for now -->
-		<script>
+		<!-- <script>
 	      document.addEventListener("DOMContentLoaded", function(event) {
 	        var scene = document.querySelector("a-scene");
 	        var vid = document.getElementById("vid1");
@@ -52,7 +52,7 @@
 	          videosphere1.components.material.material.map.image.play();
 	        }
 	      })
-    	</script>
+    	</script> -->
 		
 
 
@@ -64,8 +64,34 @@
 			<!-- Asset management system. -->
 			<a-assets>
 
-				<video id="vid1"  src="video/video1.MP4"  preload="auto"  playsinline webkit-playsinline muted="muted"> </video>
-				<video id="vid2"  src="video/video2.MP4"  preload="auto" playsinline webkit-playsinline muted="muted"> </video>
+				<!-- <video id="vid1"  src="video/video1.MP4"  preload="auto"  playsinline webkit-playsinline muted="muted"> </video>
+				<video id="vid2"  src="video/video2.MP4"  preload="auto" playsinline webkit-playsinline muted="muted"> </video> -->
+
+				<!-- Change video perpective here -->
+				<a-mixin id="scene-rotation" rotation="0 -90 0"></a-mixin>
+
+				<!-- video assets -->
+                <video 
+                    id="video1"
+                    style="display:none"
+                    autoplay
+                    preload="auto"
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline>
+                    <source type="video/mp4" src="video/video1.MP4"/>
+                </video>
+
+                <video 
+                    id="video2"
+                    style="display:none"
+                    preload="auto"
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline>
+                    <source type="video/mp4" src="video/video2.MP4"/>
+                </video>
+
+
+
 			</a-assets>
 
 
@@ -101,15 +127,15 @@
 
 			
 			<!-- scenes -->
-			<a-entity id="scenes">
+			<a-entity id="scenes" handle-vid-controls>
 				<!-- scene 1 -->
 				<a-videosphere id="videosphere1"
-				rotation="0 180 0"
+				mixin="scene-rotation"
 				visible="true"
 				src="#vid1"
-				show-btn-when-ended="target: #btn1"
+				show-btn-when-vid-ended="target: #btn1"
 				autoplay = "true"
-				play-on-window-click>
+				play-on-vrdisplayactivate-or-enter-vr>
 				</a-videosphere>
 
 				<!-- scene 2 -->
