@@ -147,17 +147,22 @@
 				</a-videosphere>
 			</a-entity>
 
+
+			<!-- Button to link to next scene -->
 			<a-entity
 				id="btn1"
-				cursor-listener	geometry = "primative: plane"
+				geometry = "primative: plane"
+				visible = "false"
 				position = "-0.8 3 -12.3"
 				rotation = "0 -1 -3"
 				scale = "12.5 25 1"
-				visible = "false"
+				 material="color: green; opacity: 0.2"
 				text = "align:center; width: 6; wrapCount:100; color:black;
 						value: CLICK HERE"
-				go-toScene-onCLick>
+				scene1-onClick>
 			</a-entity>
+
+
 
 
 			<!-- Camera + cursor. -->
@@ -177,7 +182,7 @@
 		</a-scene>
 
 		<!-- 		show button when video 1 end  -->
-		<script>
+<!-- 		<script>
 			document.getElementById("vid1").addEventListener("ended", showBtnFunction);
 
 			function showBtnFunction() {
@@ -185,16 +190,8 @@
 				button.setAttribute('visible', 'true');
 			}
 		</script>
-
-<!-- 		<script>
-			document.getElementById("btn1").addEventListener("click", goToSceneFunction);
-
-			function goToSceneFunction() {
-		  		var button = document.getElementById('btn1');
-		     	button.setAttribute('visible', 'false');
-			}
-		</script>
  -->
+
 
 
 	</body>
