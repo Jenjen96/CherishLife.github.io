@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
 		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+
+
+		<!-- a-frame and community plugins--> 
+        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+
+
 
 
 		<!-- Use components defined in separate files. -->
 		 	
-		<script src="js/play-on-window-click.js"></script>
-		<!-- <script src="hide-once-playing.js"></script> -->
-
-
-		<!-- Test -->
+		<script src="arrow-key-rotation.js"></script>
+		<script src="handle-btn1.js"></script>
+		<script src="handle-btn2.js"></script>
+		<script src="hide-once-playing.js"></script>
 		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
-
-		<script src="js/go-toScene-onClick.js"></script>
+		<script src="js/scene1-onClick.js"></script>
+		<script src="js/scene2-onClick.js"></script>
 		
+		<!-- Script needed to run video for now -->
 		<script>
 	      document.addEventListener("DOMContentLoaded", function(event) {
 	        var scene = document.querySelector("a-scene");
@@ -61,8 +69,35 @@
 			</a-assets>
 
 
+			<!-- GUI items here..
+			https://github.com/rdub80/aframe-gui/blob/master/README.md 
+			Readme to understand futher -->
+			<a-gui-flex-container 
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+			position="2 2.5 -4" rotation="0 0 0"
+			>
+				
+				<!-- Label text -->
+				<a-gui-label 
+				width="2.5" height="0.75"
+				value="label text"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				>
+				</a-gui-label>
 
-			</a-assets>
+				<!-- Button that can click -->
+				<a-gui-button 
+				width="2.5" height="0.75"
+				onclick="buttonActionFunction" key-code="32"
+				value="test button"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				>
+				</a-gui-button>
+
+
+			</a-gui-flex-container>
 
 			
 			<!-- scenes -->
@@ -100,15 +135,19 @@
 
 
 			<!-- Camera + cursor. -->
-			<a-entity camera look-controls>
-				<a-cursor id="cursor"
-				animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-				animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-				event-set__1="_event: mouseenter; color: springgreen"
-				event-set__2="_event: mouseleave; color: white"
-				fuse="true"
-				raycaster="objects: .link"></a-cursor>
-			</a-entity>
+			<a-entity id="cameraRig" position="0 1.6 0">
+				<a-camera look-controls wasd-controls position="0 0 0">
+					<a-gui-cursor id="cursor"
+					raycaster="objects: [gui-interactable]"
+					fuse="true" fuse-timeout="2000"
+					design="ring"
+					>
+				</a-gui-cursor> <!-- /cursor -->
+			</a-camera> <!-- /camera -->
+		</a-entity>
+
+
+
 		</a-scene>
 
 		<!-- 		show button when video 1 end  -->
