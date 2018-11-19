@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+
+
 		<!-- Use components defined in separate files. -->
-		<!-- <script src="js/arrow-key-rotation.js"></script> -->
+		 	
 		<script src="js/play-on-window-click.js"></script>
 		<!-- <script src="hide-once-playing.js"></script> -->
-
-
-		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+		<script src="js/show-btn-when-ended.js"></script>
+		<!-- <script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script> -->
 		<script src="js/go-toScene-onClick.js"></script>
+		
 		<script>
 	      document.addEventListener("DOMContentLoaded", function(event) {
 	        var scene = document.querySelector("a-scene");
 	        var vid = document.getElementById("vid1");
-	        var videoShere = document.getElementById("videoshere1");
+	        var videosphere1 = document.getElementById("videosphere1");
 
 	        if (scene.hasLoaded) {
 	          run();
@@ -24,7 +26,7 @@
 	        
 	        function run () {
 	          if(AFRAME.utils.device.isMobile()) {
-	            document.querySelector('#splash').style.display = 'flex';
+	            //document.querySelector('#splash').style.display = 'flex';
 	            document.querySelector('#splash').addEventListener('click', function () {
 	              playVideo();
 	              this.style.display = 'none';
@@ -36,10 +38,10 @@
 	        
 	        function playVideo () {
 	          vid.play();
-	          videoShere.components.material.material.map.image.play();
+	          videosphere1.components.material.material.map.image.play();
 	        }
 	      })
-    </script>
+    	</script>
 		
 
 	</head>
@@ -47,45 +49,43 @@
 	<body>
 		<a-scene>
 
-			 <!-- Asset management system. -->
+			<!-- Asset management system. -->
 			<a-assets>
-				<video id="vid1"  src="video/video1.mp4"  preload="auto"  playsinline webkit-playsinline> </video>
+				<!-- Video -->
+				<video id="vid1"  src="video/video1.MP4"  preload="auto"  playsinline webkit-playsinline> </video>
 				<video id="vid2"  src="video/video2.mp4"  preload="auto" playsinline webkit-playsinline> </video>
+
+				<!-- Buttons -->
+				<a-mixin id="btnPara" color= "color: yellow"></a-mixin>
+
+
 			</a-assets>
 
-
-
+			
 			<!-- scenes -->
 			<a-entity id="scenes">
 				<!-- scene 1 -->
-				<a-videosphere
+				<a-videosphere id="videosphere1"
 				rotation="0 180 0"
 				visible="true"
-				id="videosphere1"
 				src="#vid1"
-				autoplay = "true"
 				show-btn-when-ended="target: #btn1"
-				play-on-vrdisplayactivate-or-enter-vr>
+				autoplay = "true"
+				play-on-window-click>
 				</a-videosphere>
 
 				<!-- scene 2 -->
-				<a-videosphere
+				<a-videosphere id="videosphere2"
 				rotation="0 180 0"
 				visible="false"
-				id="videosphere2"
 				src="#vid2"
-				
-				autoplay loop= "false"
-				show-btn-when-ended="target: #btn2"
-				play-on-window-click
-				play-on-vrdisplayactivate-or-enter-vr> 
+				show-btn-when-ended="target: #btn2"> 
 				</a-videosphere>
 			</a-entity>
 
 			<a-entity
 				id="btn1"
-				geometry = "primative: plane"
-				material = "color: yellow; opacity:0.2"
+				cursor-listener	geometry = "primative: plane"
 				position = "-0.8 3 -12.3"
 				rotation = "0 -1 -3"
 				scale = "12.5 25 1"
@@ -95,7 +95,40 @@
 				go-toScene-onCLick>
 			</a-entity>
 
+
+			<!-- Camera + cursor. -->
+			<a-entity camera look-controls>
+				<a-cursor id="cursor"
+				animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+				animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+				event-set__1="_event: mouseenter; color: springgreen"
+				event-set__2="_event: mouseleave; color: white"
+				fuse="true"
+				raycaster="objects: .link"></a-cursor>
+			</a-entity>
 		</a-scene>
+
+		<!-- 		show button when video 1 end  -->
+		<script>
+			document.getElementById("vid1").addEventListener("ended", showBtnFunction);
+
+			function showBtnFunction() {
+				var button = document.getElementById('btn1');
+				button.setAttribute('visible', 'true');
+			}
+		</script>
+
+<!-- 		<script>
+			document.getElementById("btn1").addEventListener("click", goToSceneFunction);
+
+			function goToSceneFunction() {
+		  		var button = document.getElementById('btn1');
+		     	button.setAttribute('visible', 'false');
+			}
+		</script>
+ -->
+
+
 	</body>
 </html>
 
