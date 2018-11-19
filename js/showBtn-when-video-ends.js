@@ -19,6 +19,7 @@ AFRAME.registerComponent('show-btn-when-vid-ended', {
         console.log('in ' + this.el.id + '::pause() and removing listeners');
         this.video.removeEventListener('ended', this.showTargetBtn);
     }, 
+    //When the video ends it will trigger this function
     showTargetBtn: function() {
         console.log('in ' + this.el.id + '::showTargetBtn(), video ENDED and showing ' + this.data.target.id);
 
