@@ -1,5 +1,4 @@
 AFRAME.registerComponent('show-btn-when-vid-ended', {
-    //@bug (not ours) although this is single attribute schema, somehow html does not allow omitting "target:"
     schema: {
         target: {type: 'selector', default: ''}
     },
