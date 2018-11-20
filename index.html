@@ -26,7 +26,7 @@
 		<script>
 	      document.addEventListener("DOMContentLoaded", function(event) {
 	        var scene = document.querySelector("a-scene");
-	        var vid = document.getElementById("vid1");
+	        var vid = document.getElementById("Level1Q1Vid");
 	        var videosphere1 = document.getElementById("videosphere1");
 
 	        if (scene.hasLoaded) {
@@ -64,8 +64,8 @@
 			<!-- Asset management system. -->
 			<a-assets>
 
-				<video id="vid1"  src="video/video1.MP4"  preload="auto"  playsinline webkit-playsinline muted="muted"> </video>
-				<video id="vid2"  src="video/video2.MP4"  preload="auto" playsinline webkit-playsinline muted="muted"> </video>
+				<video id="Level1Q1Vid"  src="video/scenes/scene_howFastAction.MP4"  preload="auto"  playsinline webkit-playsinline muted="muted"> </video>
+				<video id="Level1Q2Vid"  src="video/scenes/scene_onePersonAction.MP4"  preload="auto" playsinline webkit-playsinline muted="muted"> </video>
 			</a-assets>
 
 
@@ -106,7 +106,7 @@
 				<a-videosphere id="videosphere1"
 				rotation="0 180 0"
 				visible="true"
-				src="#vid1"
+				src="#Level1Q1Vid"
 				show-btn-when-ended="target: #btn1"
 				autoplay = "true"
 				play-on-window-click>
@@ -116,7 +116,7 @@
 				<a-videosphere id="videosphere2"
 				rotation="0 180 0"
 				visible="false"
-				src="#vid2"
+				src="#Level1Q2Vid"
 				show-btn-when-ended="target: #btn2"> 
 				</a-videosphere>
 			</a-entity>
@@ -152,7 +152,7 @@
 
 		<!-- 		show button when video 1 end  -->
 		<script>
-			document.getElementById("vid1").addEventListener("ended", showBtnFunction);
+			document.getElementById("Level1Q1Vid").addEventListener("ended", showBtnFunction);
 
 			function showBtnFunction() {
 				var button = document.getElementById('btn1');
