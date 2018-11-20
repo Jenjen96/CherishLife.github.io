@@ -23,10 +23,10 @@
 		<script src="js/scene2-onClick.js"></script>
 		
 		<!-- Script needed to run video for now -->
-		<!-- <script>
+		<script>
 	      document.addEventListener("DOMContentLoaded", function(event) {
 	        var scene = document.querySelector("a-scene");
-	        var vid = document.getElementById("vid1");
+	        var vid = document.getElementById("video1");
 	        var videosphere1 = document.getElementById("videosphere1");
 
 	        if (scene.hasLoaded) {
@@ -52,7 +52,7 @@
 	          videosphere1.components.material.material.map.image.play();
 	        }
 	      })
-    	</script> -->
+    	</script>
 		
 
 
@@ -78,7 +78,7 @@
                     preload="auto"
                     crossorigin="anonymous"
                     playsinline webkit-playsinline>
-                    <source type="video/mp4" src="video/video1.MP4"/>
+                    <source type="video/mp4" src="video/scene_whichPath.MP4"/>
                 </video>
 
                 <video 
@@ -87,7 +87,7 @@
                     preload="auto"
                     crossorigin="anonymous"
                     playsinline webkit-playsinline>
-                    <source type="video/mp4" src="video/video2.MP4"/>
+                    <source type="video/mp4" src="video/scene_whichPathAction.MP4"/>
                 </video>
 
 
@@ -132,7 +132,7 @@
 				<a-videosphere id="videosphere1"
 				mixin="scene-rotation"
 				visible="true"
-				src="#vid1"
+				src="#video1"
 				show-btn-when-vid-ended="target: #btn1"
 				autoplay = "true"
 				play-on-vrdisplayactivate-or-enter-vr>
@@ -140,10 +140,10 @@
 
 				<!-- scene 2 -->
 				<a-videosphere id="videosphere2"
-				rotation="0 180 0"
+				mixin="scene-rotation"
 				visible="false"
-				src="#vid2"
-				show-btn-when-ended="target: #btn2"> 
+				src="#video2"
+				show-btn-when-vid-ended="target: #btn2"> 
 				</a-videosphere>
 			</a-entity>
 
@@ -170,8 +170,8 @@
 				<a-camera look-controls wasd-controls position="0 0 0">
 					<a-gui-cursor id="cursor"
 					raycaster="objects: [gui-interactable]"
-					fuse="true" fuse-timeout="2000"
-					design="ring"
+					fuse="true" fuse-timeout="1000"
+					design="cross"
 					>
 				</a-gui-cursor> <!-- /cursor -->
 			</a-camera> <!-- /camera -->
