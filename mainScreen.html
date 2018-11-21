@@ -30,25 +30,14 @@
 
 	<body>
 		<a-scene>
+			
+      <a-sky color="#3CF"></a-sky>
 
-      <a-sky color="#dbdedb"></a-sky>
 
-			<!-- GUI items here..
-			https://github.com/rdub80/aframe-gui/blob/master/README.md 
-			Readme to understand futher -->
-
-					<a-gui-flex-container 
+			<a-gui-flex-container 
 			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
 			opacity="0.7" width="3.5" height="4.5"
 			position="-2 2.5 -4" rotation="0 0 0"
-		>
-
-
-		</a-gui-flex-container>
-
-			<a-gui-flex-container 
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
-			position="2 2.5 -4" rotation="0 0 0"
 			>
 
 				<!-- Label text -->
@@ -72,10 +61,6 @@
 
 
 			</a-gui-flex-container>
-
-			
-			
-
 
 			<!-- Camera + cursor. -->
 			<a-entity id="cameraRig" position="0 1.6 0">
