@@ -7,6 +7,9 @@
 		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
 		<script src="https://cdn.hyperdev.com/paste-me.svg?1477325869954"></script>
 		<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+		<script src="../../../dist/aframe-master.min.js"></script>
+		  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
 
 
 		<!-- a-frame and community plugins--> 
@@ -33,7 +36,6 @@
 			
       <a-sky color="#3CF"></a-sky>
 
-
 			<a-gui-flex-container 
 			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
 			opacity="0.7" width="3.5" height="4.5"
@@ -48,6 +50,8 @@
 				onclick="window.location.href='tutorial.html'"
 				font-family="Arial"
 				value="Tutorial"
+				margin="0 0 0.5 0"
+
 			>
 			</a-gui-input>
 
@@ -56,11 +60,16 @@
 				onclick="window.location.href='index.html'"
 				font-family="Arial"
 				value="Classic Mode"
+				margin="0 0 0.2 0"
 			>
 			</a-gui-input>
 
 
 			</a-gui-flex-container>
+
+
+      <a-entity text="value:Welcome to\nCherish Your Life's\nVirtual Reality on\nRoad Safety; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/yesteryear/Yesteryear-Regular.json;" scale="15 15 15" position="8 3 -5"></a-entity>
+  
 
 			<!-- Camera + cursor. -->
 			<a-entity id="cameraRig" position="0 1.6 0">
