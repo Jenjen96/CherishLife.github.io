@@ -11,6 +11,7 @@ AFRAME.registerComponent('scene2', {
             var videosphere3 = document.querySelector('#videosphere3');
 
             var question = document.querySelector('#second');
+            var helper = document.querySelector('#helper')
 
             // remove the prev video
             videosphere2.components.material.material.map.image.pause();
@@ -20,6 +21,7 @@ AFRAME.registerComponent('scene2', {
             // hide the button
            // this.el.setAttribute('visible', 'false');
             question.setAttribute('visible', 'false');
+            helper.setAttribute('visible', 'false');
 
             //refresh playbtn
             // var playbtn = document.querySelector('#playbtn');

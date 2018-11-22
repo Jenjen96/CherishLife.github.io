@@ -10,6 +10,7 @@
         <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
 
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
 
 		<!-- Use components defined in separate files. -->
 		 	
@@ -21,6 +22,7 @@
 		<script src="js/scene1-onclick.js"></script>
 		<script src="js/scene2-onclick.js"></script>
 		<script src="js/show-btn-when-vid-ended.js"></script>
+		<script src="js/error-message.js"></script>
 		
 	</head>
 
@@ -93,7 +95,7 @@
 				src="#video2" 
 				mixin="scene-rotation"
 				show-btn-when-vid-ended="target: #second"
-				>
+				play-on-vrdisplayactivate-or-enter-vr>
 				</a-videosphere>
 
 
@@ -103,7 +105,7 @@
 				id="videosphere3"
 				src="#video3" 
 				mixin="scene-rotation"
-				
+				play-on-vrdisplayactivate-or-enter-vr
 				>
 				</a-videosphere>
 
@@ -111,16 +113,17 @@
 			</a-entity>
 
 			<a-gui-flex-container id="helper" visible="false"
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="1" width="2.5" height="2.5"
-			position="-5 2.5 -4" rotation="0 0 0" pannel-color="#FF0000"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+			position="2 4.2 -4" rotation="0 0 0" panel-color="red"
 			>
 
-				<!-- Question label -->
+				<!-- Helper label -->
 				<a-gui-label 
-				width="auto" height="0.75"
+				width="2.5" height="0.75"
 				value="Please try again..."
 				font-family="Arial"
 				margin="0 0 0.05 0"
+				background-color = "#ff0000"
 				>
 				</a-gui-label>
 
@@ -130,13 +133,14 @@
 
 			<!-- Question For Which path should you take -->
 			<a-gui-flex-container id="first" visible="false"
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0.5" width="3.5" height="4.5"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
 			position="2 2.5 -4" rotation="0 0 0"
 			>
 			
 				<!-- Question label -->
 				<a-gui-label 
 				width="5" height="0.75"
+				text = "wrapCount:100"
 				value="Which Path should you take?"
 				font-family="Arial"
 				margin="0 0 0.05 0"
@@ -150,7 +154,7 @@
 				value="Shared Path"
 				font-family="Arial"
 				margin="0 0 0.05 0"
-				scene1
+				error-message
 				>
 				</a-gui-button>
 
@@ -171,7 +175,7 @@
 
 			<!-- Question For how fast should you go -->
 			<a-gui-flex-container id="second" visible="false"
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0.5" width="3.5" height="4.5"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
 			position="2 2.5 -4" rotation="0 0 0"
 			>
 				<!-- Question label -->
@@ -190,7 +194,7 @@
 				value="15km/hr"
 				font-family="Arial"
 				margin="0 0 0.05 0"
-				scene2
+				error-message
 				>
 				</a-gui-button>
 
