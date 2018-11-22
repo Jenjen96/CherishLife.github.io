@@ -26,6 +26,29 @@
 		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
 		<script src="js/scene1-onClick.js"></script>
 		<script src="js/scene2-onClick.js"></script>
+
+		<style>
+/#text-wrapper {
+  position: fixed;
+  width: 100%;
+}
+
+#text {
+  border: 1px solid #555;
+  background-color: rgba(150, 150, 150, 0.2);
+  border-radius: 10px;
+  color: #ddd;
+  display: block;
+  font-size: 20px;
+  margin: 4px auto 0;
+  min-width: 320px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  width: 50%;
+  z-index: 1000;
+}
+</style>
 		
 <title>Cherish Your Life</title>
 
@@ -35,6 +58,8 @@
 		<a-scene>
 			
       <a-sky color="#3CF"></a-sky>
+<div id="text-wrapper">
+  <div id="text">This app is up-to-date.</div></div>
 
 			<a-gui-flex-container 
 			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
@@ -50,7 +75,7 @@
 				onclick="window.location.href='tutorial.html'"
 				font-family="Arial"
 				value="Tutorial"
-				margin="0 0 0.5 0"
+				margin="0 0 0.4 0"
 
 			>
 			</a-gui-input>
