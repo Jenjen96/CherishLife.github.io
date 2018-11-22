@@ -8,54 +8,22 @@
 
 		<!-- a-frame and community plugins--> 
         <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
 
-
-
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
 
 		<!-- Use components defined in separate files. -->
 		 	
-		<script src="arrow-key-rotation.js"></script>
-		<script src="handle-btn1.js"></script>
-		<script src="handle-btn2.js"></script>
-		<script src="hide-once-playing.js"></script>
+		<script src="js/arrow-key-rotation.js"></script>
+		<script src="js/handle-btn1.js"></script>
+		<script src="js/handle-btn2.js"></script>
+		<script src="js/hide-once-playing.js"></script>
 		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
-		<script src="js/scene1-onClick.js"></script>
-		<script src="js/scene2-onClick.js"></script>
+		<script src="js/scene1-onclick.js"></script>
+		<script src="js/scene2-onclick.js"></script>
+		<script src="js/show-btn-when-vid-ended.js"></script>
+		<script src="js/error-message.js"></script>
 		
-		<!-- Script needed to run video for now -->
-		<script>
-	      document.addEventListener("DOMContentLoaded", function(event) {
-	        var scene = document.querySelector("a-scene");
-	        var vid = document.getElementById("Level1Q1Vid");
-	        var videosphere1 = document.getElementById("videosphere1");
-
-	        if (scene.hasLoaded) {
-	          run();
-	        } else {
-	          scene.addEventListener("loaded", run);
-	        }
-	        
-	        function run () {
-	          if(AFRAME.utils.device.isMobile()) {
-	            //document.querySelector('#splash').style.display = 'flex';
-	            document.querySelector('#splash').addEventListener('click', function () {
-	              playVideo();
-	              this.style.display = 'none';
-	            })
-	          } else {
-	              playVideo();
-	          }
-	        }
-	        
-	        function playVideo () {
-	          vid.play();
-	          videosphere1.components.material.material.map.image.play();
-	        }
-	      })
-    	</script>
-		
-
-
 	</head>
 
 	<body>
@@ -64,112 +32,199 @@
 			<!-- Asset management system. -->
 			<a-assets>
 
-				<video id="Level1Q1Vid"  src="video/scenes/scene_howFastAction.MP4"  preload="auto"  playsinline webkit-playsinline muted="muted"> </video>
-				<video id="Level1Q2Vid"  src="video/scenes/scene_onePersonAction.MP4"  preload="auto" playsinline webkit-playsinline muted="muted"> </video>
+
+				<!-- Change video perpective here -->
+				<a-mixin id="scene-rotation" rotation="0 0 0"></a-mixin>
+
+             
+
+				<!-- video assets -->
+                <video 
+                    id="video1"
+                    style="display:none"
+                    autoplay
+                    preload="auto"
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline>
+                    <source type="video/mp4" src="video/scene_whichPath.mp4"/>
+                </video>
+
+               <video 
+                    id="video2"
+                    style="display:none"
+                    preload="auto"
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline>
+                    <source type="video/mp4" src="video/scene_whichPathAction.mp4"/>
+                </video>
+
+                <video 
+                    id="video3"
+                    style="display:none"
+                    preload="auto"
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline>
+                    <source type="video/mp4" src="video/scene_howFastAction.mp4"/>
+                </video>
 			</a-assets>
 
 
 			<!-- GUI items here..
 			https://github.com/rdub80/aframe-gui/blob/master/README.md 
 			Readme to understand futher -->
-			<a-gui-flex-container 
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
-			position="2 2.5 -4" rotation="0 0 0"
-			>
+	
+			
+			<!-- scenes -->
+			<a-entity id="scenes" handle-vid-controls>
+
+				<!-- scene 1 -->
+				<a-videosphere
+				visible="true"
+				id="videosphere1"
+				src="#video1" 
+				mixin="scene-rotation"
+				autoplay = "true"
+				show-btn-when-vid-ended="target: #first"
+				play-on-vrdisplayactivate-or-enter-vr>
+				</a-videosphere>
 				
-				<!-- Label text -->
+				<!-- scene 2 -->
+				<a-videosphere
+				visible="false"
+				id="videosphere2"
+				src="#video2" 
+				mixin="scene-rotation"
+				show-btn-when-vid-ended="target: #second"
+				play-on-vrdisplayactivate-or-enter-vr>
+				</a-videosphere>
+
+
+				<!-- scene 3 -->
+				<a-videosphere
+				visible="false"
+				id="videosphere3"
+				src="#video3" 
+				mixin="scene-rotation"
+				play-on-vrdisplayactivate-or-enter-vr
+				>
+				</a-videosphere>
+
+
+			</a-entity>
+
+			<a-gui-flex-container id="helper" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+			position="2 4.2 -4" rotation="0 0 0" panel-color="red"
+			>
+
+				<!-- Helper label -->
 				<a-gui-label 
 				width="2.5" height="0.75"
-				value="label text"
+				value="Please try again..."
 				font-family="Arial"
 				margin="0 0 0.05 0"
+				background-color = "#ff0000"
 				>
 				</a-gui-label>
-
-				<!-- Button that can click -->
-				<a-gui-button 
-				width="2.5" height="0.75"
-				onclick="buttonActionFunction" key-code="32"
-				value="test button"
-				font-family="Arial"
-				margin="0 0 0.05 0"
-				>
-				</a-gui-button>
 
 
 			</a-gui-flex-container>
 
+
+			<!-- Question For Which path should you take -->
+			<a-gui-flex-container id="first" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+			position="2 2.5 -4" rotation="0 0 0"
+			>
 			
-			<!-- scenes -->
-			<a-entity id="scenes">
-				<!-- scene 1 -->
-				<a-videosphere id="videosphere1"
-				rotation="0 180 0"
-				visible="true"
-				src="#Level1Q1Vid"
-				show-btn-when-ended="target: #btn1"
-				autoplay = "true"
-				play-on-window-click>
-				</a-videosphere>
+				<!-- Question label -->
+				<a-gui-label 
+				width="5" height="0.75"
+				text = "wrapCount:100"
+				value="Which Path should you take?"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				>
+				</a-gui-label>
+				 
+				<!-- Button to display error -->
+				<a-gui-button 
+				width="2.5" height="0.75"
+				 key-code="32"
+				value="Shared Path"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				error-message
+				>
+				</a-gui-button>
 
-				<!-- scene 2 -->
-				<a-videosphere id="videosphere2"
-				rotation="0 180 0"
-				visible="false"
-				src="#Level1Q2Vid"
-				show-btn-when-ended="target: #btn2"> 
-				</a-videosphere>
-			</a-entity>
+				<!-- Button to link to next scene -->
+				<a-gui-button 
+				width="2.5" height="0.75"
+				 key-code="32"
+				value="Park Connector"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				scene1
+				>
+				</a-gui-button>
 
-			<a-entity
-				id="btn1"
-				cursor-listener	geometry = "primative: plane"
-				position = "-0.8 3 -12.3"
-				rotation = "0 -1 -3"
-				scale = "12.5 25 1"
-				visible = "false"
-				text = "align:center; width: 6; wrapCount:100; color:black;
-						value: CLICK HERE"
-				go-toScene-onCLick>
-			</a-entity>
+			</a-gui-flex-container>
+
+
+
+			<!-- Question For how fast should you go -->
+			<a-gui-flex-container id="second" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+			position="2 2.5 -4" rotation="0 0 0"
+			>
+				<!-- Question label -->
+				<a-gui-label 
+				width="5" height="0.75"
+				value="How fast should you go?"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				>
+				</a-gui-label>
+				 
+				<!-- Button to display error -->
+				<a-gui-button 
+				width="2.5" height="0.75"
+				 key-code="32"
+				value="15km/hr"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				error-message
+				>
+				</a-gui-button>
+
+				<!-- Button to link to next scene -->
+				<a-gui-button 
+				width="2.5" height="0.75"
+				 key-code="32"
+				value="25km/hr"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				scene2
+				>
+				</a-gui-button>
+
+			</a-gui-flex-container>
 
 
 			<!-- Camera + cursor. -->
-			<a-entity id="cameraRig" position="0 1.6 0">
-				<a-camera look-controls wasd-controls position="0 0 0">
+			<a-entity id="cameraRig" camera position="0 1.6 0">
+				<a-camera look-controls position="0 0 0">
 					<a-gui-cursor id="cursor"
 					raycaster="objects: [gui-interactable]"
-					fuse="true" fuse-timeout="2000"
-					design="ring"
+					fuse="true" fuse-timeout="1500"
+					design="cross"
 					>
-				</a-gui-cursor> <!-- /cursor -->
-			</a-camera> <!-- /camera -->
-		</a-entity>
-
-
+					</a-gui-cursor> <!-- /cursor -->
+				</a-camera> <!-- /camera -->
+			</a-entity>
 
 		</a-scene>
-
-		<!-- 		show button when video 1 end  -->
-		<script>
-			document.getElementById("Level1Q1Vid").addEventListener("ended", showBtnFunction);
-
-			function showBtnFunction() {
-				var button = document.getElementById('btn1');
-				button.setAttribute('visible', 'true');
-			}
-		</script>
-
-<!-- 		<script>
-			document.getElementById("btn1").addEventListener("click", goToSceneFunction);
-
-			function goToSceneFunction() {
-		  		var button = document.getElementById('btn1');
-		     	button.setAttribute('visible', 'false');
-			}
-		</script>
- -->
-
 
 	</body>
 </html>
