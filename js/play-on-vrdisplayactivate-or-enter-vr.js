@@ -20,3 +20,14 @@ AFRAME.registerComponent('play-on-vrdisplayactivate-or-enter-vr', {
     video.play();
   }
 });
+
+AFRAME.registerComponent('startVideo'),{
+
+  init: function(){
+    var video = this.el.components.material.material.map.image;
+    if (!video) { 
+      console.log("Fail to load video")
+      return; }
+    video.play();
+  }
+}
