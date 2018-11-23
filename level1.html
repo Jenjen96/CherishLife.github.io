@@ -79,7 +79,7 @@
         src="#video1" 
         mixin="scene-rotation"
         autoplay = "true"
-        show-btn-when-vid-ended="target: #first"
+        show-btn-when-vid-ended="target: #first-1"
         play-on-vrdisplayactivate-or-enter-vr>
         </a-videosphere>
         <!-- scene 2 -->
@@ -88,7 +88,7 @@
         id="videosphere2"
         src="#video2" 
         mixin="scene-rotation"
-        show-btn-when-vid-ended="target: #second"
+        show-btn-when-vid-ended="target: #second-1"
         >
         </a-videosphere>
 
@@ -111,13 +111,10 @@
 
       </a-gui-flex-container>
 
-GitHub
-rdub80/aframe-gui
-Graphical User Interface Component Framework for A-Frame VR - rdub80/aframe-gui
 <!-- Question For Should i keep left or keep right -->
-      <a-gui-flex-container id="first" visible="false"
+      <a-gui-flex-container id="first-1" visible="false"
       flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
-      position="2 2.5 -4" rotation="0 0 0"
+      position="1000 1000 1000" rotation="0 0 0"
       >
         
       
@@ -138,7 +135,7 @@ Graphical User Interface Component Framework for A-Frame VR - rdub80/aframe-gui
         value="Left"
         font-family="Arial"
         margin="0 0 0.05 0"
-        scene1
+        scene1-1
         >
         </a-gui-button>
 
@@ -155,9 +152,9 @@ Graphical User Interface Component Framework for A-Frame VR - rdub80/aframe-gui
       </a-gui-flex-container>
 
       <!-- Question For how fast should you go -->
-      <a-gui-flex-container id="second" visible="false"
+      <a-gui-flex-container id="second-1" visible="false"
       flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
-      position="2 2.5 -4" rotation="0 0 0"
+      position="1000 1000 1000" rotation="0 0 0"
       >
       <a-gui-button 
         width="2.5" height="0.75"
