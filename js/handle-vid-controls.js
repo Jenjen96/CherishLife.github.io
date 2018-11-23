@@ -10,8 +10,12 @@ AFRAME.registerComponent('handle-vid-controls', {
         // aggregate the 2 scenes here
         this.videosphere1 = document.querySelector('#videosphere1');
         this.videosphere2 = document.querySelector('#videosphere2');
+        this.videosphere3 = document.querySelector('#videosphere3');
+        this.videosphere4 = document.querySelector('#videosphere4');
         this.video1 = videosphere1.components.material.material.map.image;
         this.video2 = videosphere2.components.material.material.map.image;
+        this.video3 = videosphere3.components.material.material.map.image;
+        this.video4 = videosphere4.components.material.material.map.image;
     }, 
     play: function () {
         console.log('in ' + this.el.id + '::play() and attaching listeners');
@@ -30,6 +34,10 @@ AFRAME.registerComponent('handle-vid-controls', {
             video = this.video1;
         else 
             video = this.video2;
+        else
+            video = this.video3;
+        else
+            video = this.video4;
 
         this.togglePlay(video, true);
     },
@@ -40,6 +48,10 @@ AFRAME.registerComponent('handle-vid-controls', {
             video = this.video1;
         else 
             video = this.video2;
+        else
+            video = this.video3;
+        else
+            video = this.video4;
 
         if (evt.code == "Space")
             this.togglePlay(video);
