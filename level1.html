@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="apple-mobile-web-app-capable" content="yes">
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
 
 
-		<!-- a-frame and community plugins--> 
+    <!-- a-frame and community plugins--> 
         <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+
         <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
 
+    <!-- Use components defined in separate files. -->
+       
+    <script src="js/arrow-key-rotation.js"></script>
+    <script src="js/handle-btn1.js"></script>
+    <script src="js/handle-btn2.js"></script>
+    <script src="js/hide-once-playing.js"></script>
+    <script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+    <script src="js/scene1-onclick.js"></script>
+    <script src="js/scene2-onclick.js"></script>
+    <script src="js/show-btn-when-vid-ended.js"></script>
+    <script src="js/error-message.js"></script>
+    <script src="js/backtomain.js"></script>
+    
+  </head>
 
-		<!-- Use components defined in separate files. --> 	
-		<script src="js/arrow-key-rotation.js"></script>
-		<script src="js/handle-btn1.js"></script>
-		<script src="js/handle-btn2.js"></script>
-		<script src="js/hide-once-playing.js"></script>
-		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
-		<script src="js/scene1-onclick.js"></script>
-		<script src="js/scene2-onclick.js"></script>
-		<script src="js/show-btn-when-vid-ended.js"></script>
-		<script src="js/error-message.js"></script>
-		<script src="js/backtomain.js"></script>
-		
-	</head>
+  <body>
+    <a-scene>
 
-	<body>
-		<a-scene>
-
-			<!-- Asset management system. -->
-			<a-assets>
+      <!-- Asset management system. -->
+      <a-assets>
 
 
-				<!-- Change video perpective here -->
-				<a-mixin id="scene-rotation" rotation="0 -70 0"></a-mixin>
+        <!-- Change video perpective here -->
+        <a-mixin id="scene-rotation" rotation="0 -70 0"></a-mixin>
 
              
 
-				<!-- video assets -->
+        <!-- video assets -->
                 <video 
                     id="video1"
                     style="display:none"
@@ -49,133 +50,142 @@
                     <source type="video/mp4" src="video/scene_onePerson.mp4"/>
                 </video>
 
+                 <video
+                   id="video2"
+                   style="display:none"
+                   preload="auto"
+                   crossorigin="anonymous"
+                   playsinline webkit-playsinline>
+                   <source type="video/mp4" src="video/scene_onePersonAction.mp4"/>
+                 </video>
+
              
 
-			</a-assets>
+      </a-assets>
 
 
-			<!-- GUI items here..
-			https://github.com/rdub80/aframe-gui/blob/master/README.md 
-			Readme to understand futher -->
-	
-			
-			<!-- scenes -->
-			<a-entity id="scenes" handle-vid-controls>
+      <!-- GUI items here..
+      https://github.com/rdub80/aframe-gui/blob/master/README.md 
+      Readme to understand futher!!! -->
+  
+      
+      <!-- scenes -->
+      <a-entity id="scenes" handle-vid-controls>
 
-				<!-- scene 1 -->
-				<a-videosphere
-				visible="true"
-				id="videosphere1"
-				src="#video1" 
-				mixin="scene-rotation"
-				autoplay = "true"
-				show-btn-when-vid-ended="target: #first"
-				play-on-vrdisplayactivate-or-enter-vr>
-				</a-videosphere>
+        <!-- scene 1 -->
+        <a-videosphere
+        visible="true"
+        id="videosphere1"
+        src="#video1" 
+        mixin="scene-rotation"
+        autoplay = "true"
+        show-btn-when-vid-ended="target: #first"
+        play-on-vrdisplayactivate-or-enter-vr>
+        </a-videosphere>
+        <!-- scene 2 -->
+        <a-videosphere
+        visible="false"
+        id="videosphere2"
+        src="#video2" 
+        mixin="scene-rotation"
+        show-btn-when-vid-ended="target: #second"
+        >
+        </a-videosphere>
 
-			</a-entity>
+      </a-entity>
 
-			<a-gui-flex-container id="helper" visible="false"
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
-			position="2 4.2 -4" rotation="0 0 0" panel-color="red"
-			>
+      <a-gui-flex-container id="helper" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+      position="2 4.2 -4" rotation="0 0 0" panel-color="red"
+      >
 
-			<!-- Helper label -->
-				<a-gui-label 
-				width="2.5" height="0.75"
-				value="Please try again..."
-				font-family="Arial"
-				margin="0 0 0.05 0"
-				background-color = "#ff0000"
-				>
-				</a-gui-label>
+      <!-- Helper label -->
+        <a-gui-label 
+        width="5" height="0.75"
+        value="Always keep left to avoid collision"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        background-color = "#ff0000"
+        >
+        </a-gui-label>
 
-			</a-gui-flex-container>
+      </a-gui-flex-container>
+
+GitHub
+rdub80/aframe-gui
+Graphical User Interface Component Framework for A-Frame VR - rdub80/aframe-gui
+<!-- Question For Should i keep left or keep right -->
+      <a-gui-flex-container id="first" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+      position="2 2.5 -4" rotation="0 0 0"
+      >
+        
+      
+        <!-- Question label!! -->
+        <a-gui-label 
+        width="5" height="0.75"
+        text = "wrapCount:100"
+        value="Should i Keep Left or Keep Right?"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        >
+        </a-gui-label>
+         
+        <!-- Button to display error -->
+        <a-gui-button 
+        width="2.5" height="0.75"
+        key-code="32"
+        value="Left"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        scene1
+        >
+        </a-gui-button>
+
+        <!-- Button to link to next scene -->
+        <a-gui-button 
+        width="2.5" height="0.75"
+        key-code="32"
+        value="Right"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        error-message
+        >
+        </a-gui-button>
+      </a-gui-flex-container>
+
+      <!-- Question For how fast should you go -->
+      <a-gui-flex-container id="second" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+      position="2 2.5 -4" rotation="0 0 0"
+      >
+      <a-gui-button 
+        width="2.5" height="0.75"
+        key-code="32"
+        value="next"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        onclick="window.location.href='levelup.html'"
+        >
+        </a-gui-button>
+
+      </a-gui-flex-container>
 
 
-			<!-- Question For Should i keep left or keep right -->
-			<a-gui-flex-container id="first" visible="false"
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
-			position="2 2.5 -4" rotation="0 0 0"
-			>
-				
-			
-				<!-- Question label -->
-				<a-gui-label 
-				width="5" height="0.75"
-				text = "wrapCount:100"
-				value="Should i Keep Left or Keep Right?"
-				font-family="Arial"
-				margin="0 0 0.05 0"
-				>
-				</a-gui-label>
-				 
-				<!-- Button to display error -->
-				<a-gui-button 
-				width="2.5" height="0.75"
-				 key-code="32"
-				value="Speed Up"
-				font-family="Arial"
-				margin="0 0 0.05 0"
-				error-message
-				>
-				</a-gui-button>
+      
+      <!-- Camera + cursor. -->
+      <a-entity id="cameraRig" camera position="0 1.6 0">
+        <a-camera look-controls position="0 0 0">
+          <a-gui-cursor id="cursor"
+          raycaster="objects: [gui-interactable]"
+          fuse="true" fuse-timeout="1500"
+          design="cross"
+          >
+          </a-gui-cursor> <!-- /cursor -->
+        </a-camera> <!-- /camera -->
+      </a-entity>
 
-				<!-- Button to link to next scene -->
-				<a-gui-button 
-				width="2.5" height="0.75"
-				 key-code="32"
-				value="Slow Down"
-				font-family="Arial"
-				margin="0 0 0.05 0"
-				scene1
-				>
-				</a-gui-button>
+    </a-scene>
 
-		
-
-			</a-gui-flex-container>
-			<!-- Level Completed -->
-			   <a-gui-flex-container id="third" visible="false"
-			   flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="1" width="50" height="30"
-			   position="0 0 0" rotation="0 0 0" panel-color = "#00FF00"
-			   >
-			    <!-- Question label -->
-			    <a-gui-label 
-			    width="5" height="0.75"
-			    value="Level 1 Completed!"
-			    font-family="Arial"
-			    margin="0 0 0.05 0"
-			    >
-			    </a-gui-label>
-			     
-
-			    <!-- Button to link to next scene -->
-			    <a-gui-button 
-			    width="2.5" height="0.75"
-			     key-code="32"
-			    value="GO!"
-			    font-family="Arial"
-			    margin="0 0 0.05 0"
-			    onclick="window.location.href='level2.html'"
-			    >
-			    </a-gui-button>
-
-			   </a-gui-flex-container>
-			<!-- Camera + cursor. -->
-			<a-entity id="cameraRig" camera position="0 1.6 0">
-				<a-camera look-controls position="0 0 0">
-					<a-gui-cursor id="cursor"
-					raycaster="objects: [gui-interactable]"
-					fuse="true" fuse-timeout="1500"
-					design="cross"
-					>
-					</a-gui-cursor> <!-- /cursor -->
-				</a-camera> <!-- /camera -->
-			</a-entity>
-
-		</a-scene>
-
-	</body>
+  </body>
 </html>
-
