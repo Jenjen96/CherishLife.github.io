@@ -7,6 +7,8 @@ AFRAME.registerComponent('scene2', {
     gotoScene: function(evt) {
         if (this.el.getAttribute('visible')) {
             console.log('in window.gotoScene');
+            this.el.parentNode.removeChild(this.el); 
+
             var videosphere2 = document.querySelector('#videosphere2');
             var videosphere3 = document.querySelector('#videosphere3');
 
@@ -29,16 +31,14 @@ AFRAME.registerComponent('scene2', {
             // playbtn.play();
 
             // change the scene
-            videosphere3.setAttribute('visible', 'true');
             //videosphere2.play(); // need to be after visible!
-            videosphere3.components.material.material.map.image.play();
-
+            videosphere3.setAttribute("show-btn-when-vid-ended", "target: #third")
+            videosphere3.setAttribute('visible', 'true');
             // reestablish listeners
+            videosphere3.components.material.material.map.image.play();
             document.querySelector('#scenes').play();
 
             // remove self
-            this.el.parentNode.removeChild(this.el); 
         }
     },
 });
-

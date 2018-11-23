@@ -5,24 +5,21 @@
 
 		<script src="js/aframe.min.js"></script>
 
-
 		<!-- a-frame and community plugins--> 
         <script src="js/aframe-gui.min.js"></script>
         <script src="js/aframe-look-at-component.min.js"></script>
-
         <script src="js/aframe-extras.min.js"></script>
 
 		<!-- Use components defined in separate files. -->
-		 	
 		<script src="js/arrow-key-rotation.js"></script>
 		<script src="js/handle-btn1.js"></script>
 		<script src="js/handle-btn2.js"></script>
 		<script src="js/hide-once-playing.js"></script>
 		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
-		<script src="js/scene1-onclick.js"></script>
-<!-- 		<script src="js/scene2-onclick.js"></script>
- -->	<script src="js/show-btn-when-vid-ended.js"></script>
 		<script src="js/error-message.js"></script>
+    <script src="js/scene1-onclick.js"></script>
+	 	<script src="js/scene2-onclick.js"></script>
+ 		<script src="js/show-btn-when-vid-ended.js"></script>
 		
 	</head>
 
@@ -36,7 +33,6 @@
 				<!-- Change video perpective here -->
 				<a-mixin id="scene-rotation" rotation="0 0 0"></a-mixin>
 
-             
 
 				<!-- video assets -->
                 <video 
@@ -45,14 +41,13 @@
                     width="100%" 
                     height="100%" 
                     preload="auto">
-
                     <source type="video/mp4" src="video/scene_whichPath.mp4"/>
                 </video>
+        
                 <video
                     id="video2"
                     playsinline webkit-playsinline
                     preload="auto"
-
                     width="100%" 
                     height="100%">
                     <source type="video/mp4" src="video/scene_whichPathAction.mp4"/>
@@ -60,6 +55,10 @@
 
                 <video 
                     id="video3"
+                    playsinline webkit-playsinline
+                    preload="auto"
+                    width="100%" 
+                    height="100%">
                     style="display:none"
                     preload="auto"
                     playsinline>
@@ -82,8 +81,9 @@
 				src="#video1" 
 				mixin="scene-rotation"
 				show-btn-when-vid-ended="target: #first"
-				play-on-vrdisplayactivate-or-enter-vr
-				>
+
+				play-on-vrdisplayactivate-or-enter-vr>
+
 				</a-videosphere>
 				
 				<!-- scene 2 -->
@@ -91,22 +91,21 @@
 				visible="false"
 				id="videosphere2"
 				src="#video2" 
-				mixin="scene-rotation"
-				>
-				</a-videosphere>
 
+				mixin="scene-rotation">
+
+				</a-videosphere>
 
 				<!-- scene 3 -->
 				<a-videosphere
 				visible="false"
 				id="videosphere3"
-				src="" 
-				mixin="scene-rotation"
-				>
+				src="#video3"
+				mixin="scene-rotation">
+
 				</a-videosphere>
 
 			</a-entity>
-
 			<a-gui-flex-container id="helper" visible="false"
 			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
 			position="2 4.2 -4" rotation="0 0 0" panel-color="red"
@@ -114,8 +113,30 @@
 
 				<!-- Helper label -->
 				<a-gui-label 
+				width="9" height="0.75"
+				id = "helperText"
+				value = "If there is park connector, you should use it to minimise accident"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				background-color = "#ff0000"
+				>
+				</a-gui-label>
+
+
+			</a-gui-flex-container>
+
+			<a-gui-flex-container id="helper-speed" visible="false"
+
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+			position="2 4.2 -4" rotation="0 0 0" panel-color="red"
+			>
+
+				<!-- Helper label -->
+				<a-gui-label 
 				width="2.5" height="0.75"
-				value="Please try again..."
+
+				id = "helperText"
+				value = 'test'
 				font-family="Arial"
 				margin="0 0 0.05 0"
 				background-color = "#ff0000"
@@ -206,34 +227,34 @@
 
 			</a-gui-flex-container>
 
-
 			<!-- Level Completed -->
-			<a-gui-flex-container id="third" visible="false"
-			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="1" width="50" height="30"
-			position="2 2 -5" rotation="0 0 0" panel-color = "#228B22"
-			>
-				<!-- Question label -->
-				<a-gui-label 
-				width="9" height="0.75"
-				value="Game Completed Thank you for playing"
-				font-family="Arial"
-				margin="0 0 0.05 0"
-				>
-				</a-gui-label>
+   <a-gui-flex-container id="third" visible="false"
+   flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="1" width="50" height="30"
+   position="2 2 -5" rotation="0 0 0" panel-color = "#228B22"
+   >
+    <!-- Question label -->
+    <a-gui-label 
+    width="9" height="0.75"
+    value="Game Completed Thank you for playing"
+    font-family="Arial"
+    margin="0 0 0.05 0"
+    >
+    </a-gui-label>
 
 
-				<!-- Button to link to next scene -->
-				<a-gui-button 
-				width="8" height="0.75"
-				key-code="32"
-				value="Back to main Screen!.."
-				font-family="Arial"
-				margin="0 0 0.05 0"
-				onclick="window.location.href='mainScreen.html'"
-				>
-			</a-gui-button>
+    <!-- Button to link to next scene -->
+    <a-gui-button 
+    width="8" height="0.75"
+    key-code="32"
+    value="Back to main Screen!.."
+    font-family="Arial"
+    margin="0 0 0.05 0"
+    onclick="window.location.href='mainScreen.html'"
+    >
+   </a-gui-button>
 
-		</a-gui-flex-container>
+  </a-gui-flex-container>
+
 
 
 			<!-- Camera + cursor. -->
@@ -251,5 +272,8 @@
 		</a-scene>
 
 	</body>
+
+	
+
 </html>
 
