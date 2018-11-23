@@ -1,4 +1,4 @@
-AFRAME.registerComponent('handle-vid-controls', {
+AFRAME.registerComponent('handle-vid-controls2', {
     init: function () {
         //dependencies: ['videosphere1', 'videosphere2'];
         console.log('in ' + this.el.id + '::init()');
@@ -8,15 +8,10 @@ AFRAME.registerComponent('handle-vid-controls', {
         this.debug = this.debug.bind(this);
         
         // aggregate the 2 scenes here
-        this.videosphere1 = document.querySelector('#videosphere1');
         this.videosphere2 = document.querySelector('#videosphere2');
         this.videosphere3 = document.querySelector('#videosphere3');
-        this.videosphere4 = document.querySelector('#videosphere4');
-        this.video1 = videosphere1.components.material.material.map.image;
         this.video2 = videosphere2.components.material.material.map.image;
         this.video3 = videosphere3.components.material.material.map.image;
-        this.video4 = videosphere4.components.material.material.map.image;
-
     }, 
     play: function () {
         console.log('in ' + this.el.id + '::play() and attaching listeners');
@@ -31,30 +26,20 @@ AFRAME.registerComponent('handle-vid-controls', {
     onClick: function (evt) {
         console.log('in ' + this.el.id + '::onClick()');
         var video;
-        if (this.videosphere1 && this.videosphere1.getAttribute('visible'))
-            video = this.video1;
-        else 
+        if (this.videosphere2 && this.videosphere2.getAttribute('visible'))
             video = this.video2;
-        else
+        else 
             video = this.video3;
-        else
-            video = this.video4;
-
 
         this.togglePlay(video, true);
     },
     onKeyUp: function (evt) {
         //console.log('in ' + this.el.id + '::onKeyUp()');
         var video;
-        if (this.videosphere1 && this.videosphere1.getAttribute('visible'))
-            video = this.video1;
-        else 
+        if (this.videosphere2 && this.videosphere2.getAttribute('visible'))
             video = this.video2;
-        else
+        else 
             video = this.video3;
-        else
-            video = this.video4;
-
 
         if (evt.code == "Space")
             this.togglePlay(video);
@@ -87,7 +72,7 @@ AFRAME.registerComponent('handle-vid-controls', {
     },
     debug: function() {
         console.log('in ' + this.el.id + '::debug()');
-        this.videosphere2.pause();
-        console.log('in ' + this.el.id + '::debug() AFTER pause ' + videosphere2.id + ' paused=' + this.videosphere2.components.material.material.map.image.paused);
+        this.videosphere3.pause();
+        console.log('in ' + this.el.id + '::debug() AFTER pause ' + videosphere3.id + ' paused=' + this.videosphere3.components.material.material.map.image.paused);
     }
 });
