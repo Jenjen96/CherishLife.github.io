@@ -3,14 +3,14 @@
 	<head>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 
-		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+		<script src="js/aframe.min.js"></script>
 
 
 		<!-- a-frame and community plugins--> 
-        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+        <script src="js/aframe-gui.min.js"></script>
+        <script src="js/aframe-look-at-component.min.js"></script>
 
-        <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
+        <script src="js/aframe-extras.min.js"></script>
 
 		<!-- Use components defined in separate files. -->
 		 	
@@ -20,8 +20,8 @@
 		<script src="js/hide-once-playing.js"></script>
 		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
 		<script src="js/scene1-onclick.js"></script>
-		<script src="js/scene2-onclick.js"></script>
-		<script src="js/show-btn-when-vid-ended.js"></script>
+<!-- 		<script src="js/scene2-onclick.js"></script>
+ -->	<script src="js/show-btn-when-vid-ended.js"></script>
 		<script src="js/error-message.js"></script>
 		
 	</head>
@@ -41,20 +41,20 @@
 				<!-- video assets -->
                 <video 
                     id="video1"
-                    style="display:none"
-                    autoplay
-                    preload="auto"
-                    crossorigin="anonymous"
-                    playsinline webkit-playsinline>
+                    playsinline webkit-playsinline
+                    width="100%" 
+                    height="100%" 
+                    preload="auto">
+
                     <source type="video/mp4" src="video/scene_whichPath.mp4"/>
                 </video>
-
-               <video 
+                <video
                     id="video2"
-                    style="display:none"
+                    playsinline webkit-playsinline
                     preload="auto"
-                    crossorigin="anonymous"
-                    playsinline webkit-playsinline>
+
+                    width="100%" 
+                    height="100%">
                     <source type="video/mp4" src="video/scene_whichPathAction.mp4"/>
                 </video>
 
@@ -62,10 +62,8 @@
                     id="video3"
                     style="display:none"
                     preload="auto"
-                    crossorigin="anonymous"
-                    playsinline webkit-playsinline>
+                    playsinline>
                     <source type="video/mp4" src="video/scene_howFastAction.mp4"/>
-                </video>
 			</a-assets>
 
 
@@ -83,7 +81,6 @@
 				id="videosphere1"
 				src="#video1" 
 				mixin="scene-rotation"
-				autoplay = "true"
 				show-btn-when-vid-ended="target: #first"
 				play-on-vrdisplayactivate-or-enter-vr
 				>
@@ -95,7 +92,6 @@
 				id="videosphere2"
 				src="#video2" 
 				mixin="scene-rotation"
-				show-btn-when-vid-ended="target: #second"
 				>
 				</a-videosphere>
 
@@ -104,12 +100,10 @@
 				<a-videosphere
 				visible="false"
 				id="videosphere3"
-				src="#video3" 
+				src="" 
 				mixin="scene-rotation"
-				show-btn-when-vid-ended="target: #third"
 				>
 				</a-videosphere>
-
 
 			</a-entity>
 
