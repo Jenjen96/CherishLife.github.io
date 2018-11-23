@@ -32,12 +32,11 @@ AFRAME.registerComponent('scene1', {
 
             // change the scene
             //videosphere2.play(); // need to be after visible!
-            videosphere2.setAttribute("show-btn-when-vid-ended","target: #second")
             videosphere2.setAttribute('visible', 'true');
+            videosphere2.setAttribute("show-btn-when-vid-ended","target: #second");
             // reestablish listeners
             videosphere2.components.material.material.map.image.play();
-
-            document.querySelector('#videosphere2').play();
+            document.querySelector('#scenes').play();
 
             // remove self
         }
