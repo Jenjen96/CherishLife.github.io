@@ -16,6 +16,7 @@ AFRAME.registerComponent('handle-vid-controls', {
         this.video2 = videosphere2.components.material.material.map.image;
         this.video3 = videosphere3.components.material.material.map.image;
         this.video4 = videosphere4.components.material.material.map.image;
+
     }, 
     play: function () {
         console.log('in ' + this.el.id + '::play() and attaching listeners');
@@ -39,6 +40,7 @@ AFRAME.registerComponent('handle-vid-controls', {
         else
             video = this.video4;
 
+
         this.togglePlay(video, true);
     },
     onKeyUp: function (evt) {
@@ -52,6 +54,7 @@ AFRAME.registerComponent('handle-vid-controls', {
             video = this.video3;
         else
             video = this.video4;
+
 
         if (evt.code == "Space")
             this.togglePlay(video);
