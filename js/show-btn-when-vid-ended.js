@@ -25,7 +25,48 @@ AFRAME.registerComponent('show-btn-when-vid-ended', {
         document.querySelector('#scenes').pause();
 
         // show the 'target' button
-        this.data.target.setAttribute('visible', 'true');
+        // this.data.target.setAttribute('visible', 'true');
+        if(this.data.target.getAttribute('id') == 'first-3'){
+            this.data.target.setAttribute('position',"2 2.5 -4");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'second-3'){
+            this.data.target.setAttribute('position',"2 2.5 -4");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'third-3'){
+            this.data.target.setAttribute('position',"2 2 -5");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'first-1'){
+            this.data.target.setAttribute('position',"2 2.5 -4");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'second-1'){
+            this.data.target.setAttribute('position',"2 2.5 -4");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'first-2'){
+            this.data.target.setAttribute('position',"2 3.1 -4");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'second-2'){
+            this.data.target.setAttribute('position',"2 2.5 -4");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'third-2'){
+            this.data.target.setAttribute('position',"2 2 -5");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'third-1'){
+            this.data.target.setAttribute('position',"0 2 -7");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'fourth-1'){
+            this.data.target.setAttribute('position',"0 2 -7");
+            this.data.target.setAttribute('visible', 'true');
+        }
+
     }
 });
 
