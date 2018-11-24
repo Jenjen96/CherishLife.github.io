@@ -58,6 +58,14 @@ AFRAME.registerComponent('show-btn-when-vid-ended', {
             this.data.target.setAttribute('position',"2 2 -5");
             this.data.target.setAttribute('visible', 'true');
         }
+        else if(this.data.target.getAttribute('id') == 'third-1'){
+            this.data.target.setAttribute('position',"0 2 -7");
+            this.data.target.setAttribute('visible', 'true');
+        }
+        else if(this.data.target.getAttribute('id') == 'fourth-1'){
+            this.data.target.setAttribute('position',"0 2 -7");
+            this.data.target.setAttribute('visible', 'true');
+        }
 
     }
 });

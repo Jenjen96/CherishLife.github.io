@@ -11,8 +11,6 @@
         <script src="js/aframe-extras.min.js"></script>
 
     <!-- Use components defined in separate files. -->
-       
-    <script src="js/arrow-key-rotation.js"></script>
     <script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
     <script src="js/scene1-onclick.js"></script>
     <script src="js/show-btn-when-vid-ended.js"></script>
@@ -55,6 +53,26 @@
                    <source type="video/mp4" src="video/scene_onePersonAction.mp4"/>
                  </video>
 
+                 <video 
+                    id="video3"
+                    style="display:none"
+                      muted
+                    preload="auto"
+                    crossorigin="anonymous"
+
+                    <source type="video/mp4" src="video/scene_manyPeople.mp4"/>
+                </video>
+
+                 <video
+                   id="video4"
+                   style="display:none"
+                   preload="auto"
+                   muted
+                   crossorigin="anonymous"
+                   playsinline webkit-playsinline>
+                   <source type="video/mp4" src="video/scene_manyPeopleAction.mp4"/>
+                 </video>
+
              
 
       </a-assets>
@@ -88,6 +106,23 @@
         >
         </a-videosphere>
 
+        <a-videosphere
+        visible="false"
+        id="videosphere3"
+        src="#video3" 
+        mixin="scene-rotation"
+        show-btn-when-vid-ended="target: #third-1">
+        </a-videosphere>
+        <!-- scene 2 -->
+        <a-videosphere
+        visible="false"
+        id="videosphere4"
+        src="#video4" 
+        mixin="scene-rotation"
+        show-btn-when-vid-ended="target: #fourth-1"
+        >
+        </a-videosphere>
+
       </a-entity>
 
       <a-gui-flex-container id="helper1-1" visible="false"
@@ -99,6 +134,40 @@
         <a-gui-label 
         width="5" height="0.75"
         value="Always keep left to avoid collision"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        background-color = "#ff0000"
+        >
+        </a-gui-label>
+
+      </a-gui-flex-container>
+
+      <a-gui-flex-container id="helper2-1" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+      position="2 4.2 -4" rotation="0 0 0" panel-color="red"
+      >
+
+      <!-- Helper label -->
+        <a-gui-label 
+        width="6" height="0.75"
+        value="The maximum speed is only 15KM/H!"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        background-color = "#ff0000"
+        >
+        </a-gui-label>
+
+      </a-gui-flex-container>
+
+      <a-gui-flex-container id="helper3-1" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+      position="0 0 -7" rotation="0 0 0" panel-color="red"
+      >
+
+      <!-- Helper label -->
+        <a-gui-label 
+        width="6" height="0.75"
+        value="Dismount when it is crowded"
         font-family="Arial"
         margin="0 0 0.05 0"
         background-color = "#ff0000"
@@ -153,18 +222,91 @@
       flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
       position="1000 1000 1000" rotation="0 0 0"
       >
+      <a-gui-label 
+        width="5" height="0.75"
+        text = "wrapCount:100"
+        value="How fast can you go on the footpath?"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        >
+        </a-gui-label>
+
+       <a-gui-button 
+        width="3.5" height="0.75"
+        key-code="32"
+        value="15KM/H"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        scene1-2>
+        </a-gui-button>
+
+        <!-- Button to link to next scene -->
+        <a-gui-button 
+        id="wrong1-2"
+        width="3.5" height="0.75"
+        key-code="32"
+        value="25KM/H"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        error-message 
+        >
+        </a-gui-button>
+      </a-gui-flex-container>
+
+      <a-gui-flex-container id="third-1" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+      position="1000 1000 1000" rotation="0 3 0"
+      >
+        <!-- Question label!! -->
+        <a-gui-label 
+        width="5" height="0.75"
+        text = "wrapCount:100"
+        value="Should you dismount and overtake?"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        >
+        </a-gui-label>
+        <!-- Button to link to next scene -->
+
+        <a-gui-button 
+        width="2.5" height="0.75"
+        key-code="32"
+        value="Yes"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        scene1-3
+        >
+        </a-gui-button>
+        <!-- Button to display error -->
+
+        <a-gui-button 
+        id="wrong1-3"
+        width="2.5" height="0.75"
+        key-code="32"
+        value="No"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        error-message
+        >
+        </a-gui-button>
+      </a-gui-flex-container>
+
+      <!-- Question For how fast should you go -->
+      <a-gui-flex-container id="fourth-1" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+      position="1000 1000 1000" rotation="0 0 0"
+      >
       <a-gui-button 
         width="6" height="0.75"
         key-code="32"
         value="Click to see learning objectives for the stage!"
         font-family="Arial"
         margin="0 0 0.05 0"
-        onclick="window.location.href='levelup.html'"
+        onclick="window.location.href='levelup3.html'"
         >
         </a-gui-button>
 
       </a-gui-flex-container>
-
 
       
       <!-- Camera + cursor. -->

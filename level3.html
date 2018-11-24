@@ -3,7 +3,7 @@
 	<head>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 
-		<script src="js/aframe.min.js"></script>
+		<script src="js/aframe.min.js"></script> 
 
 		<!-- a-frame and community plugins--> 
         <script src="js/aframe-gui.min.js"></script>
@@ -11,15 +11,10 @@
         <script src="js/aframe-extras.min.js"></script>
 
 		<!-- Use components defined in separate files. -->
-		<script src="js/arrow-key-rotation.js"></script>
-		<script src="js/handle-btn1.js"></script>
-		<script src="js/handle-btn2.js"></script>
-		<script src="js/hide-once-playing.js"></script>
 		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
-		<script src="js/error-message.js"></script>
-    <script src="js/scene1-onclick.js"></script>
-	 	<script src="js/scene2-onclick.js"></script>
- 		<script src="js/show-btn-when-vid-ended.js"></script>
+    	<script src="js/scene1-onclick.js"></script>
+    	<script src="js/show-btn-when-vid-ended.js"></script>
+    	<script src="js/error-message.js"></script>
 		
 	</head>
 
@@ -73,6 +68,7 @@
 			<!-- scenes -->
 			<a-entity id="scenes" handle-vid-controls>
 
+				<!-- scene 1 -->
 				<a-videosphere
 				visible="true"
 				id="videosphere1"
@@ -89,7 +85,6 @@
 				id="videosphere2"
 				src="#video2" 
 				mixin="scene-rotation"
-				autoplay = "true"
 				show-btn-when-vid-ended="target: #second-3">
 				</a-videosphere>
 
@@ -99,7 +94,6 @@
 				id="videosphere3"
 				src="#video3" 
 				mixin="scene-rotation"
-				autoplay = "true"
 				show-btn-when-vid-ended="target: #third-3">
 
 				</a-videosphere>
@@ -132,7 +126,7 @@
 				<!-- Helper label -->
 				<a-gui-label 
 				width="5" height="0.75"
-				value = 'Ride slowly does not equal to safer!'
+				value = 'The maximum speed is only 25KM/H!'
 				font-family="Arial"
 				margin="0 0 0.05 0"
 				background-color = "#ff0000"
@@ -164,7 +158,7 @@
 				width="2.5" height="0.75"
 				key-code="32"
 				id = 'wrong3-1'
-				value="Shared Path"
+				value="Foot Path"
 				font-family="Arial"
 				margin="0 0 0.05 0"
 				error-message
@@ -175,10 +169,10 @@
 				<a-gui-button 
 				width="2.5" height="0.75"
 				 key-code="32"
-				value="Park Connector"
+				value="Shared Path"
 				font-family="Arial"
 				margin="0 0 0.05 0"
-				scene1-3
+				scene3-1
 				>
 				</a-gui-button>
 
@@ -193,8 +187,8 @@
 			>
 				<!-- Question label -->
 				<a-gui-label 
-				width="5" height="0.75"
-				value="How fast should you go?"
+				width="7" height="0.75"
+				value="How fast can you go on the shared path?"
 				font-family="Arial"
 				margin="0 0 0.05 0"
 				>
@@ -205,7 +199,7 @@
 				width="2.5" height="0.75"
 				id="wrong3-2"
 				 key-code="32"
-				value="15km/hr"
+				value="15KM/H"
 				font-family="Arial"
 				margin="0 0 0.05 0"
 				error-message
@@ -216,24 +210,25 @@
 				<a-gui-button 
 				width="2.5" height="0.75"
 				 key-code="32"
-				value="25km/hr"
+				value="25KM/H"
 				font-family="Arial"
 				margin="0 0 0.05 0"
-				scene2-3
+				scene3-2
 				>
 				</a-gui-button>
 
 			</a-gui-flex-container>
 
 			<!-- Level Completed -->
+
       <a-gui-flex-container id="third-3" visible="false"
       flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
       position="1000 1000 1000" rotation="0 0 0"
       >
       <a-gui-button 
-        width="4" height="0.75"
+        width="6" height="0.75"
         key-code="32"
-        value="GameCompleted!"
+        value="Click to see learning objectives for the stage!"
         font-family="Arial"
         margin="0 0 0.05 0"
         onclick="window.location.href='gameComplete.html'"
@@ -241,9 +236,6 @@
         </a-gui-button>
 
       </a-gui-flex-container>
-
-  </a-gui-flex-container>
-
 
 
 			<!-- Camera + cursor. -->
