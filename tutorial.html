@@ -8,33 +8,8 @@
     <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
 
-   <style type="text/css">
-      #video-permission {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: white;
-          z-index: 10000;
-          display: none;
-      }
-
-      #video-permission-button {
-        position: fixed;
-        top: calc(50% - 1em);
-        left: calc(50% - 60px);
-        width: 120px;
-        height: 2em;
-      }
-    </style> 
-
   </head>
   <body>
-
-     <div id="video-permission">
-      <button id="video-permission-button">Allow VR video</button>
-    </div>
 
     <a-scene fog="type: linear; near:12; far:20; color: #3CF;"><!--Night mode: #0c192a-->
 
@@ -50,7 +25,7 @@
 
       <a-assets>
         <img src="assets/white_grid_thin.png" id="grid" crossorigin="anonymous">
-        <video id="video-src" src="video/SCTFvideo.mp4"></video>
+        <video id="video-src" muted autoplay src="video/SCTFvideo.mp4"></video>
       </a-assets>
 
       <!-- CURSOR -->
