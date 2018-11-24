@@ -1,6 +1,6 @@
 # CherishYourLife - Introduction
 
-The name of our product is “Cherished your life VR System”. It aims to educate users (e.g. PMD users, cyclists, and pedestrians), and change their mindsets on riding etiquette in Singapore, so that they will improve their behaviors on roads, walkways, and shared paths. It is simple to use and comprehensible to the point that users will be able to learn, remember, and practice, in real life, what they experienced in the Virtual Environment (VE) with ease.
+The name of our product is “CherisYourLife”. It aims to educate users (e.g. PMD users, cyclists, and pedestrians), and change their mindsets on riding etiquette in Singapore, so that they will improve their behaviors on roads, walkways, and shared paths. It is simple to use and comprehensible to the point that users will be able to learn, remember, and practice, in real life, what they experienced in the Virtual Environment (VE) with ease.
 The purpose of this document is to list well-defined system requirements (functional and non-functional), so that all stakeholders can have a clear understanding on how our system works.
 
 ## Getting Started
