@@ -38,6 +38,7 @@
                 <video 
                     id="video1"
                     autoplay
+                    muted
                     preload="auto"
                     crossorigin="anonymous"
                     playsinline webkit-playsinline>
@@ -47,6 +48,7 @@
                 <video
                     id="video2"
                     preload="auto"
+                    muted
                     crossorigin="anonymous"
                     playsinline webkit-playsinline>
                     <source type="video/mp4" src="video/scene_whichPathAction.mp4"/>
@@ -55,6 +57,7 @@
                 <video 
                     id="video3"
                     preload="auto"
+                    muted
                     crossorigin="anonymous"
                     playsinline webkit-playsinline>
 		    >
@@ -70,16 +73,14 @@
 			<!-- scenes -->
 			<a-entity id="scenes" handle-vid-controls>
 
-				<!-- scene 1 -->
 				<a-videosphere
 				visible="true"
 				id="videosphere1"
 				src="#video1" 
 				mixin="scene-rotation"
+				autoplay = "true"
 				show-btn-when-vid-ended="target: #first-3"
-
 				play-on-vrdisplayactivate-or-enter-vr>
-
 				</a-videosphere>
 				
 				<!-- scene 2 -->
@@ -87,21 +88,19 @@
 				visible="false"
 				id="videosphere2"
 				src="#video2" 
-
 				mixin="scene-rotation"
-				show-btn-when-vid-ended="target: #second-3"
-				>
-
+				autoplay = "true"
+				show-btn-when-vid-ended="target: #second-3">
 				</a-videosphere>
 
 				<!-- scene 3 -->
 				<a-videosphere
 				visible="false"
 				id="videosphere3"
-				src="#video3"
+				src="#video3" 
 				mixin="scene-rotation"
-				show-btn-when-vid-ended="target: #third-3"
-				>
+				autoplay = "true"
+				show-btn-when-vid-ended="target: #third-3">
 
 				</a-videosphere>
 

@@ -37,9 +37,11 @@
                     id="video1"
                     style="display:none"
                     autoplay
+                    muted
                     preload="auto"
                     crossorigin="anonymous"
-                    playsinline webkit-playsinline>
+                    playsinline webkit-playsinline play-on-vrdisplayactivate-or-enter-vr>
+
                     <source type="video/mp4" src="video/scene_onePerson.mp4"/>
                 </video>
 
@@ -47,6 +49,7 @@
                    id="video2"
                    style="display:none"
                    preload="auto"
+                   muted
                    crossorigin="anonymous"
                    playsinline webkit-playsinline>
                    <source type="video/mp4" src="video/scene_onePersonAction.mp4"/>
@@ -151,9 +154,9 @@
       position="1000 1000 1000" rotation="0 0 0"
       >
       <a-gui-button 
-        width="2.5" height="0.75"
+        width="6" height="0.75"
         key-code="32"
-        value="next"
+        value="Click to see learning objectives for the stage!"
         font-family="Arial"
         margin="0 0 0.05 0"
         onclick="window.location.href='levelup.html'"
