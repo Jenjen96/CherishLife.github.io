@@ -12,6 +12,11 @@ These instructions will get you a copy of the project up and running on your loc
 Video Assets have to be downloaded 
 Link - (https://www.dropbox.com/s/e504o2d6vt4rgmj/video.7z?dl=0)
 
+Admin Website can be found in the zip folder
+```
+SCTF Cherish Life.zip
+```
+
 ### Youtube Link
 
 Demo - (https://www.youtube.com/watch?v=Qk1UTmCGpJM&t=1s)
