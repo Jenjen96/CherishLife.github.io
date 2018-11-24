@@ -23,7 +23,7 @@ Demo - (https://youtu.be/Db7S4iLGxEI)
 
 ## Github Pages
 
-https://andrewkzy.github.io/
+Videos cannot be played as git hub do not allow folders bigger then 100MB - (https://andrewkzy.github.io/)
 
 ## Built With
 
