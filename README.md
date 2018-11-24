@@ -19,7 +19,7 @@ SCTF Cherish Life.zip
 
 ## Youtube Link
 
-Demo - (https://www.youtube.com/watch?v=Qk1UTmCGpJM&t=1s)
+Demo - (https://youtu.be/Db7S4iLGxEI)
 
 ## Github Pages
 
