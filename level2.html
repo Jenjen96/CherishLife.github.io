@@ -105,15 +105,15 @@
 
 			</a-entity>
 
-			<a-gui-flex-container id="helper" visible="false"
+			<a-gui-flex-container id="helper2-1" visible="false"
 			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
 			position="2 4.8 -4" rotation="0 0 0" panel-color="red"
 			>
 
 				<!-- Helper label -->
 				<a-gui-label 
-				width="2.5" height="0.75"
-				value="Please try again..."
+				width="7.5" height="0.75"
+				value="Do not cross zebra crossing with your skateboard on!"
 				font-family="Arial"
 				margin="0 0 0.05 0"
 				background-color = "#ff0000"
@@ -122,6 +122,25 @@
 
 
 			</a-gui-flex-container>
+
+			<a-gui-flex-container id="helper2-2" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+			position="2 4.8 -4" rotation="0 0 0" panel-color="red"
+			>
+
+				<!-- Helper label -->
+				<a-gui-label 
+				width="6.5" height="0.75"
+				value="It is dangerous to ride while crossing road!"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				background-color = "#ff0000"
+				>
+				</a-gui-label>
+
+
+			</a-gui-flex-container>
+
 
 
 			<!-- Question: What should you do at a zebra crossing -->
@@ -142,6 +161,7 @@
 				 
 				<!-- Button to display error -->
 				<a-gui-button 
+				id="wrong2-1"
 				width="7" height="0.75"
 				 key-code="32"
 				value="Cross while still riding your device"
@@ -181,6 +201,7 @@
 				 
 				<!-- Button to display error -->
 				<a-gui-button 
+				id="wrong2-2"
 				width="7" height="0.75"
 				 key-code="32"
 				value="Start riding your device again"

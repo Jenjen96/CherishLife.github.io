@@ -13,7 +13,7 @@ AFRAME.registerComponent('scene1-3', {
             var videosphere2 = document.querySelector('#videosphere2');
 
             var question = document.querySelector('#first-3');
-            var helper = document.querySelector('#helper')
+            var helper = document.querySelector('#helper3-1')
 
             // remove the prev video
             videosphere1.components.material.material.map.image.pause();
@@ -58,7 +58,7 @@ AFRAME.registerComponent('scene1-1', {
             var videosphere2 = document.querySelector('#videosphere2');
 
             var question = document.querySelector('#first-1');
-            var helper = document.querySelector('#helper')
+            var helper = document.querySelector('#helper1-1')
 
             // remove the prev video
             videosphere1.components.material.material.map.image.pause();
@@ -103,7 +103,7 @@ AFRAME.registerComponent('scene1-2', {
             var videosphere2 = document.querySelector('#videosphere2');
 
             var question = document.querySelector('#first-2');
-            var helper = document.querySelector('#helper')
+            var helper = document.querySelector('#helper2-1')
 
             // remove the prev video
             videosphere1.components.material.material.map.image.pause();
@@ -148,7 +148,7 @@ AFRAME.registerComponent('scene1c-2', {
             var videosphere2 = document.querySelector('#videosphere3');
 
             var question = document.querySelector('#second-2');
-            var helper = document.querySelector('#helper')
+            var helper = document.querySelector('#helper2-2')
 
             // remove the prev video
             videosphere1.components.material.material.map.image.pause();

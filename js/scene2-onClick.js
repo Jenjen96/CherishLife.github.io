@@ -13,7 +13,7 @@ AFRAME.registerComponent('scene2-3', {
             var videosphere3 = document.querySelector('#videosphere3');
 
             var question = document.querySelector('#second-3');
-            var helper = document.querySelector('#helper')
+            var helper = document.querySelector('#helper3-2')
 
             // remove the prev video
             videosphere2.components.material.material.map.image.pause();
