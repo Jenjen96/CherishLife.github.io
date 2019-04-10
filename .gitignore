@@ -1,0 +1,11 @@
+rm '*.mp4'
+*.MP4
+
+
+node_modules
+.DS_Store
+**/bundle.js
+npm-debug.log
+build
+old.html
+**/tmp*

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<script src="js/aframe.min.js"></script>
+
+		<!-- a-frame and community plugins--> 
+        <script src="js/aframe-gui.min.js"></script>
+        <script src="js/aframe-look-at-component.min.js"></script>
+        <script src="js/aframe-extras.min.js"></script>
+
+		<!-- Use components defined in separate files. -->
+		<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+    	<script src="js/scene1-onclick.js"></script>
+    	<script src="js/show-btn-when-vid-ended.js"></script>
+    	<script src="js/error-message.js"></script>
+
+		
+	</head>
+
+	<body>
+		<a-scene>
+
+			<!-- Asset management system. -->
+			<a-assets>
+
+
+				<!-- Change video perpective here --> 
+				<a-mixin id="scene-rotation" rotation="0 -55 0"></a-mixin>
+
+
+				<!-- video assets -->
+                <video 
+                    id="video1"
+                    autoplay
+                    preload="auto"
+                    muted
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline
+                    <source type="video/mp4" src="video/scene_zebraCrossing.mp4"/>
+                </video>
+                <video 
+                    id="video2"
+                    preload="auto"
+                    muted
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline>
+                    <source type="video/mp4" src="video/scene_zebraCrossingAction.mp4"/>
+                </video>
+				<video 
+                    id="video3"
+                    preload="auto"
+                    muted
+                    crossorigin="anonymous"
+                    playsinline webkit-playsinline>
+                    <source type="video/mp4" src="video/trafficLight.mp4"/>
+                </video>                        
+
+			</a-assets>
+
+
+			<!-- GUI items here..
+			https://github.com/rdub80/aframe-gui/blob/master/README.md 
+			Readme to understand futher -->
+	
+
+			<!-- scenes -->
+			<a-entity id="scenes" handle-vid-controls>
+
+				<!-- scene 1 -->
+				<a-videosphere
+				visible="true"
+				id="videosphere1"
+				src="#video1" 
+				mixin="scene-rotation"
+				autoplay = "true"
+				show-btn-when-vid-ended="target: #first-2"
+				play-on-vrdisplayactivate-or-enter-vr>
+				</a-videosphere>
+				
+				<!-- scene 2 -->
+				<a-videosphere
+				visible="false"
+				id="videosphere2"
+				src="#video2" 
+				mixin="scene-rotation"
+				show-btn-when-vid-ended="target: #second-2">
+				</a-videosphere>
+
+				<!-- scene 3 -->
+				<a-videosphere
+				visible="false"
+				id="videosphere3"
+				src="#video3" 
+				mixin="scene-rotation"
+				show-btn-when-vid-ended="target: #third-2">
+
+				</a-videosphere>
+
+
+			</a-entity>
+
+			<a-gui-flex-container id="helper2-1" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+			position="2 4.8 -4" rotation="0 0 0" panel-color="red"
+			>
+
+				<!-- Helper label -->
+				<a-gui-label 
+				width="7.5" height="0.75"
+				value="Do not cross zebra crossing with your skateboard on!"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				background-color = "#ff0000"
+				>
+				</a-gui-label>
+
+
+			</a-gui-flex-container>
+
+			<a-gui-flex-container id="helper2-2" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="2.5" height="2.5"
+			position="2 4.8 -4" rotation="0 0 0" panel-color="red"
+			>
+
+				<!-- Helper label -->
+				<a-gui-label 
+				width="6.5" height="0.75"
+				value="It is dangerous to ride while crossing road!"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				background-color = "#ff0000"
+				>
+				</a-gui-label>
+
+
+			</a-gui-flex-container>
+
+
+
+			<!-- Question: What should you do at a zebra crossing -->
+			<a-gui-flex-container id="first-2" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+			position="100 100 100" rotation="0 0 0"
+			>
+			
+				<!-- Question label -->
+				<a-gui-label 
+				width="7" height="0.75"
+				text = "wrapCount:100"
+				value="What should you do at a zebra crossing?"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				>
+				</a-gui-label>
+				 
+				<!-- Button to display error -->
+				<a-gui-button 
+				id="wrong2-1"
+				width="7" height="0.75"
+				 key-code="32"
+				value="Cross while still riding your device"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				error-message
+				>
+				</a-gui-button>
+
+				<!-- Button to link to next scene -->
+				<a-gui-button 
+				width="7" height="0.75"
+				 key-code="32"
+				value="Dismount your device and push while crossing"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				scene2-1
+				>
+				</a-gui-button>
+
+			</a-gui-flex-container>
+
+
+			<!-- Question: What should you do while crossing the road -->
+			<a-gui-flex-container id="second-2" visible="false"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+			position="100 100 100" rotation="0 0 0"
+			>
+				<!-- Question label -->
+				<a-gui-label 
+				width="7" height="0.75"
+				value="While crossing the road, you should: "
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				>
+				</a-gui-label>
+				 
+				<!-- Button to display error -->
+				<a-gui-button 
+				id="wrong2-2"
+				width="7" height="0.75"
+				 key-code="32"
+				value="Start riding your device again"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				error-message
+				>
+				</a-gui-button>
+
+				<!-- Button to link to next scene -->
+				<a-gui-button 
+				width="7" height="0.75"
+				 key-code="32"
+				value="Continue to cross while pushing your device along"
+				font-family="Arial"
+				margin="0 0 0.05 0"
+				scene2-2
+				>
+				</a-gui-button>
+
+			</a-gui-flex-container>
+
+
+			<!-- Level Completed -->
+   			</a-gui-flex-container>
+
+      <!-- Question For how fast should you go -->
+      <a-gui-flex-container id="third-2" visible="false"
+      flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" opacity="0" width="3.5" height="4.5"
+      position="1000 1000 1000" rotation="0 0 0"
+      >
+      <a-gui-button 
+        width="6" height="0.75"
+        key-code="32"
+        value="Click to see learning objectives for the stage!"
+        font-family="Arial"
+        margin="0 0 0.05 0"
+        onclick="window.location.href='levelup2.html'"
+        >
+        </a-gui-button>
+
+      </a-gui-flex-container>
+
+
+			<!-- Camera + cursor. -->
+			<a-entity id="cameraRig" camera position="0 1.6 0">
+				<a-camera look-controls position="0 0 0">
+					<a-gui-cursor id="cursor"
+					raycaster="objects: [gui-interactable]"
+					fuse="true" fuse-timeout="1500"
+					design="cross"
+					>
+					</a-gui-cursor> <!-- /cursor -->
+				</a-camera> <!-- /camera -->
+			</a-entity>
+
+		</a-scene>
+
+	</body>
+</html>
+

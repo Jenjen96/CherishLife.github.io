@@ -1,28 +1,79 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
-	<!-- Use components defined in separate files. -->
-	<script src="js/arrow-key-rotation.js"></script>
-	<script src="js/play-on-window-click.js"></script>
-	<script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
-	<!-- <script src="hide-once-playing.js"></script> -->
-</head>
 
-<body>
+	<head>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<script src="js/aframe.min.js"></script>
+    <script src="js/gradientsky.min.js"></script>
+
+
+
+		<!-- a-frame and community plugins--> 
+        <script src="js/aframe-gui.min.js"></script>
+
+		
+<title>Cherish Your Life</title>
+
+	</head>
+
+	<body>
 	<a-scene>
-		<a-videosphere rotation="0 180 0" src="#video" 
-		play-on-window-click
-		play-on-vrdisplayactivate-or-enter-vr>
-	</a-videosphere>
-	<a-assets>
-		<video id="vid1" autoplay loop="true" src="video/video1.mp4"  playsinline webkit-playsinline> </video>
-	</a-assets>
+			
+      <a-sky color="#3CF"></a-sky>
 
-	<!-- Using the asset management system. -->
-	<a-videosphere src="#vid1"></a-videosphere>
+			<a-gui-flex-container 
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
+			opacity="0.7" width="3.5" height="4.5"
+			position="-2 2.5 -4" rotation="0 0 0"
+			>
 
-</a-scene>
-</body>
+				<!-- Label text -->
+
+
+				<a-gui-input 
+				width="2.5" height="0.75"
+				onclick="window.location.href='tutorial.html'"
+				font-family="Arial"
+				value="Tutorial"
+				margin="0 0 0.5 0"
+
+			>
+			</a-gui-input>
+
+                    <a-gui-input 
+				width="2.5" height="0.75"
+				onclick="window.location.href='level1.html'"
+				font-family="Arial"
+				value="Classic Mode"
+				margin="0 0 0.2 0"
+			>
+			</a-gui-input>
+
+
+			</a-gui-flex-container>
+
+
+      <a-entity text="value:Welcome to\nCherish Your Life's\nVirtual Reality on\nRoad Safety; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/yesteryear/Yesteryear-Regular.json;" scale="15 15 15" position="8 3 -5"></a-entity>
+  
+
+			<!-- Camera + cursor. -->
+			<a-entity id="cameraRig" position="0 1.6 0">
+				<a-camera look-controls wasd-controls position="0 0 0">
+					<a-gui-cursor id="cursor"
+					raycaster="objects: [gui-interactable]"
+					fuse="true" fuse-timeout="2000"
+					design="dot"
+					>
+				</a-gui-cursor> <!-- /cursor -->
+			</a-camera> <!-- /camera -->
+		</a-entity>
+
+
+
+	</a-scene>
+
+
+	</body>
 </html>
 
